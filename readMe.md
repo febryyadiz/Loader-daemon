@@ -8,3 +8,5 @@ How to run the service:
 
 
 Note: I have created the docker container, but somehow when i start the container, the status was exit. I still searching the rootcause and the solustion
+
+Here's the docker image: https://hub.docker.com/layers/febryyadiz/loader-daemon/1.0/images/sha256-1afd8c6a7c448bd842bc529b86056364a3b58955ebca00013cd821ce1c993e35?context=explore
