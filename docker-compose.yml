@@ -1,4 +1,4 @@
-version: '3.8'
+version: '1.0'
 services:
     mongo:
         container_name: mongo
@@ -13,7 +13,3 @@ services:
     backend:
         context: .
         dockerfile: Dockerfile
-    ports:
-        - 8080:8080
-    volumes: :
-        - .:/app
