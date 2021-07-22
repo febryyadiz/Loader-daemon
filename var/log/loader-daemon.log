@@ -12769,3 +12769,121 @@
 20210721_164514 308 -> loader_daemon INFO : [Main    ]: thread 0 done
 20210721_164514 308 -> loader_daemon INFO : [Main    ]: thread 1 done
 20210721_164514 308 -> loader_daemon INFO : [Main    ]: thread 2 done
+20210722_112134 98 -> loader_daemon INFO : [Main    ]: create and start thread 0.
+20210722_112134 100 -> loader_daemon INFO : [Thread 0]: starting
+20210722_112134 101 -> loader_daemon INFO : [Thread 0]: team.csv is detected
+20210722_112134 101 -> loader_daemon INFO : [Main    ]: create and start thread 1.
+20210722_112134 107 -> loader_daemon INFO : [Thread 0]: read the team.csv is done
+20210722_112134 107 -> loader_daemon INFO : [Thread 1]: starting
+20210722_112134 108 -> loader_daemon INFO : [Main    ]: create and start thread 2.
+20210722_112134 108 -> loader_daemon INFO : [Thread 1]: team_skill.csv is detected
+20210722_112134 109 -> loader_daemon INFO : [Thread 2]: starting
+20210722_112134 111 -> loader_daemon INFO : [Thread 1]: read the team_skill.csv is done
+20210722_112134 115 -> loader_daemon INFO : [Thread 2]: task.csv is detected
+20210722_112134 118 -> loader_daemon INFO : [Thread 2]: read the task.csv is done
+20210722_112134 120 -> loader_daemon INFO : (pymysql.err.OperationalError) (1046, 'No database selected')
+[SQL: 
+CREATE TABLE team (
+	`TEAM_ID` TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+20210722_112134 122 -> loader_daemon INFO : [Thread 0]: delete the team.csv is done
+20210722_112134 123 -> loader_daemon INFO : [Thread 0]: finishing
+20210722_112134 123 -> loader_daemon INFO : [Main    ]: thread 0 done
+20210722_112134 128 -> loader_daemon INFO : (pymysql.err.OperationalError) (1046, 'No database selected')
+[SQL: 
+CREATE TABLE team_skill (
+	`TEAM_ID` TEXT, 
+	`SKILL` TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+20210722_112134 128 -> loader_daemon INFO : (pymysql.err.OperationalError) (1046, 'No database selected')
+[SQL: 
+CREATE TABLE task (
+	`TASK_ID` TEXT, 
+	`SKILL` TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+20210722_112134 128 -> loader_daemon INFO : [Thread 1]: delete the team_skill.csv is done
+20210722_112134 129 -> loader_daemon INFO : [Thread 2]: delete the task.csv is done
+20210722_112134 129 -> loader_daemon INFO : [Thread 1]: finishing
+20210722_112134 129 -> loader_daemon INFO : [Thread 2]: finishing
+20210722_112134 130 -> loader_daemon INFO : [Main    ]: thread 1 done
+20210722_112134 130 -> loader_daemon INFO : [Main    ]: thread 2 done
+20210722_112154 161 -> loader_daemon INFO : [Main    ]: create and start thread 0.
+20210722_112154 162 -> loader_daemon INFO : [Thread 0]: starting
+20210722_112154 162 -> loader_daemon INFO : [Main    ]: create and start thread 1.
+20210722_112154 162 -> loader_daemon INFO : [Thread 0]: team.csv is detected
+20210722_112154 163 -> loader_daemon INFO : [Thread 1]: starting
+20210722_112154 164 -> loader_daemon INFO : [Main    ]: create and start thread 2.
+20210722_112154 168 -> loader_daemon INFO : [Thread 0]: read the team.csv is done
+20210722_112154 169 -> loader_daemon INFO : [Thread 1]: team_skill.csv is detected
+20210722_112154 170 -> loader_daemon INFO : [Thread 2]: starting
+20210722_112154 176 -> loader_daemon INFO : [Thread 2]: task.csv is detected
+20210722_112154 185 -> loader_daemon INFO : [Thread 2]: read the task.csv is done
+20210722_112154 189 -> loader_daemon INFO : (pymysql.err.OperationalError) (1046, 'No database selected')
+[SQL: 
+CREATE TABLE team (
+	`TEAM_ID` TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+20210722_112154 193 -> loader_daemon INFO : [Thread 1]: read the team_skill.csv is done
+20210722_112154 194 -> loader_daemon INFO : [Thread 0]: delete the team.csv is done
+20210722_112154 198 -> loader_daemon INFO : [Thread 0]: finishing
+20210722_112154 199 -> loader_daemon INFO : (pymysql.err.OperationalError) (1046, 'No database selected')
+[SQL: 
+CREATE TABLE task (
+	`TASK_ID` TEXT, 
+	`SKILL` TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+20210722_112154 200 -> loader_daemon INFO : [Main    ]: thread 0 done
+20210722_112154 200 -> loader_daemon INFO : [Thread 2]: delete the task.csv is done
+20210722_112154 201 -> loader_daemon INFO : [Thread 2]: finishing
+20210722_112154 203 -> loader_daemon INFO : (pymysql.err.OperationalError) (1046, 'No database selected')
+[SQL: 
+CREATE TABLE team_skill (
+	`TEAM_ID` TEXT, 
+	`SKILL` TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+20210722_112154 204 -> loader_daemon INFO : [Thread 1]: delete the team_skill.csv is done
+20210722_112154 204 -> loader_daemon INFO : [Thread 1]: finishing
+20210722_112154 204 -> loader_daemon INFO : [Main    ]: thread 1 done
+20210722_112154 204 -> loader_daemon INFO : [Main    ]: thread 2 done
+20210722_113403 565 -> loader_daemon INFO : [Main    ]: create and start thread 0.
+20210722_113403 566 -> loader_daemon INFO : [Thread 0]: starting
+20210722_113403 566 -> loader_daemon INFO : [Thread 0]: team.csv is detected
+20210722_113403 566 -> loader_daemon INFO : [Main    ]: create and start thread 1.
+20210722_113403 568 -> loader_daemon INFO : [Thread 0]: read the team.csv is done
+20210722_113403 569 -> loader_daemon INFO : [Thread 1]: starting
+20210722_113403 569 -> loader_daemon INFO : [Main    ]: create and start thread 2.
+20210722_113403 569 -> loader_daemon INFO : [Thread 1]: team_skill.csv is detected
+20210722_113403 570 -> loader_daemon INFO : [Thread 2]: starting
+20210722_113403 571 -> loader_daemon INFO : [Thread 2]: task.csv is detected
+20210722_113403 573 -> loader_daemon INFO : [Thread 1]: read the team_skill.csv is done
+20210722_113403 576 -> loader_daemon INFO : [Thread 2]: read the task.csv is done
+20210722_113403 650 -> loader_daemon INFO : [Thread 1]: insert into team_skill.csv table is done
+20210722_113403 651 -> loader_daemon INFO : [Thread 0]: insert into team.csv table is done
+20210722_113403 657 -> loader_daemon INFO : [Thread 1]: delete the team_skill.csv is done
+20210722_113403 657 -> loader_daemon INFO : [Thread 1]: finishing
+20210722_113403 657 -> loader_daemon INFO : [Thread 0]: delete the team.csv is done
+20210722_113403 659 -> loader_daemon INFO : [Thread 0]: finishing
+20210722_113403 659 -> loader_daemon INFO : [Main    ]: thread 0 done
+20210722_113403 659 -> loader_daemon INFO : [Main    ]: thread 1 done
+20210722_113403 660 -> loader_daemon INFO : [Thread 2]: insert into task.csv table is done
+20210722_113403 662 -> loader_daemon INFO : [Thread 2]: delete the task.csv is done
+20210722_113403 662 -> loader_daemon INFO : [Thread 2]: finishing
+20210722_113403 662 -> loader_daemon INFO : [Main    ]: thread 2 done

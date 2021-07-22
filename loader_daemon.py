@@ -6,6 +6,8 @@ import logging
 import threading
 import pandas as pd
 from sqlalchemy import create_engine
+# from sqlalchemy-utils import database_exists, create_database
+
 
 """
     Constants
@@ -34,7 +36,7 @@ config = {
 
 }
 
-def dataProcess(dir_contents, dir_path):  
+def data_process(dir_contents, dir_path):  
     threads = list()
     index = 0
     for file in dir_contents:
@@ -98,13 +100,22 @@ if __name__ == "__main__":
     dbname=config['db']['dbname']
     uname=config['db']['uname']
     pwd=config['db']['pwd']
+    # if not database_exists(engine.url):
+    #     create_database(engine.url)
+
     try:
-        engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
-                        .format(host=hostname, db=dbname, user=uname, pw=pwd))
+        engine = create_engine("mysql+pymysql://{user}:{pw}@{host}"
+                        .format(host=hostname, user=uname, pw=pwd))
+        existing_databases = engine.execute("SHOW DATABASES;")
+        existing_databases = [d[0] for d in existing_databases]
+        if dbname not in existing_databases:
+            engine.execute("CREATE DATABASE {0}".format(dbname))
+
     except Exception as e:
         print(e)
-        sys.exit(0)
 
+        
+        
 
     """
         content directory checking
@@ -122,7 +133,7 @@ if __name__ == "__main__":
         try:
             dir_contents = os.listdir(dir_path)
             if len(dir_contents) !=0:
-                dataProcess(dir_contents, dir_path)        
+                data_process(dir_contents, dir_path)        
         except Exception as e:
             if 'Received Signal ' in e.args[0]:
                 logging.info(e)
