@@ -102,19 +102,18 @@ if __name__ == "__main__":
     pwd=config['db']['pwd']
     # if not database_exists(engine.url):
     #     create_database(engine.url)
-
     try:
         engine = create_engine("mysql+pymysql://{user}:{pw}@{host}"
-                        .format(host=hostname, user=uname, pw=pwd))
+                        .format(host=hostname, user=uname, pw=pwd))    
         existing_databases = engine.execute("SHOW DATABASES;")
         existing_databases = [d[0] for d in existing_databases]
         if dbname not in existing_databases:
             engine.execute("CREATE DATABASE {0}".format(dbname))
 
+        engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
+                        .format(host=hostname, user=uname, pw=pwd, db=dbname))
     except Exception as e:
         print(e)
-
-        
         
 
     """
