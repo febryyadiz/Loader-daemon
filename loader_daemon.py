@@ -5,9 +5,7 @@ import os
 import logging
 import threading
 import pandas as pd
-from sqlalchemy import create_engine
-# from sqlalchemy-utils import database_exists, create_database
-
+from sqlalchemy import create_engine, String, Column, ForeignKey, Table, MetaData
 
 """
     Constants
@@ -51,7 +49,6 @@ def data_process(dir_contents, dir_path):
         logging.info("[Main    ]: thread %d done", index)
   
 
-
 def thread_function(index, file, dir_path):
     logging.info("[Thread %s]: starting", index)
     logging.info('[Thread %s]: '+ file + ' is detected', index)
@@ -62,7 +59,7 @@ def thread_function(index, file, dir_path):
         logging.info('[Thread %s]: read the '+ file +' is done', index)
         with engine.begin() as connection:
             df.to_sql(fileName, con=connection, index=False, if_exists='append')
-            logging.info('[Thread %s]: insert into '+ file +' table is done', index)
+            logging.info('[Thread %s]: insert into '+ fileName +' table is done', index)
             engine.dispose()
 
     except Exception as e:
@@ -74,7 +71,30 @@ def thread_function(index, file, dir_path):
 
     logging.info('[Thread %s]: finishing', index)
 
+def create_tables():
+    ''' Create new tables handler'''
+    metadata = MetaData()
+    with engine.connect() as conn:
+        team_table = Table('team', metadata,
+            Column('TEAM_ID', String(10), primary_key=True)
+        )
+ 
 
+        task_table = Table('task', metadata,
+            Column('TASK_ID', String(10), primary_key=True),
+            Column('SKILL', String(10), nullable=False)
+        )
+   
+
+        team_skill_table = Table('team_skill', metadata,
+            Column('TEAM_ID', String(10), nullable=False),
+            Column('SKILL', String(10), nullable=False)
+        )
+ 
+
+        metadata.create_all(conn, checkfirst=False)
+        conn.close()
+        return
 
 
 if __name__ == "__main__":
@@ -100,21 +120,30 @@ if __name__ == "__main__":
     dbname=config['db']['dbname']
     uname=config['db']['uname']
     pwd=config['db']['pwd']
-    # if not database_exists(engine.url):
-    #     create_database(engine.url)
+
     try:
         engine = create_engine("mysql+pymysql://{user}:{pw}@{host}"
                         .format(host=hostname, user=uname, pw=pwd))    
         existing_databases = engine.execute("SHOW DATABASES;")
         existing_databases = [d[0] for d in existing_databases]
+        # DB checking
         if dbname not in existing_databases:
             engine.execute("CREATE DATABASE {0}".format(dbname))
+            
 
         engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
                         .format(host=hostname, user=uname, pw=pwd, db=dbname))
+
+        existing_tables = engine.execute("SHOW TABLES")
+        existing_tables = [d[0] for d in existing_tables]
+        # Tables checking
+        if len(existing_tables)==0:
+            create_tables()
+
     except Exception as e:
         print(e)
-        
+
+
 
     """
         content directory checking
@@ -140,6 +169,3 @@ if __name__ == "__main__":
         time.sleep(1)
 
     logging.info("[ Terminated ]")
-
-
-
